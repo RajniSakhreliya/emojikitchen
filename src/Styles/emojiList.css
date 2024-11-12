@@ -1,0 +1,20 @@
+.emoji-container {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.emoji-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background-color 100ms;
+}
