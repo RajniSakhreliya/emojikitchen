@@ -1,95 +1,91 @@
-import React, { useEffect, useState } from 'react'
-import "../Styles/cooking.css"
-import EmojiComponent from '../Components/EmojiComponents/EmojiComponent'
-import ResultComponent from '../Components/EmojiComponents/ResultComponent'
-import { useSelector } from 'react-redux';
-import EmojiView from '../Components/EmojiComponents/EmojiView';
-import { checkEmojiEnableDisabled, getEmojiCombinations, getRandomEmoji } from '../Utils/Utils';
+import React, { useEffect, useState } from "react";
+import "../Styles/cooking.css";
+import EmojiComponent from "../Components/EmojiComponents/EmojiComponent";
+import ResultComponent from "../Components/EmojiComponents/ResultComponent";
+import { useSelector } from "react-redux";
+import { getRandomEmoji, getEmojiCombinations } from "../Utils/Utils";
+import EmojiView from "../Components/EmojiComponents/EmojiView";
 
 const Cooking = () => {
-  const emojiList = useSelector(state => state.emojiData);
-  const emojiMixer = useSelector(state => state.emojiMixer);
+  const emojiList = useSelector((state) => state.emojiData);
+  const emojiMixer = useSelector((state) => state.emojiMixer);
 
-  const [isFirstEmojiSelected, setFirstEmojiSelected] = useState(false);
-  const [isSecondEmojiSelected, setSecondEmojiSelected] = useState(true);
   const [firstEmoji, setFirstEmoji] = useState("");
   const [secondEmoji, setSecondEmoji] = useState("");
-
   const [finalAnswer, setFinalAnswer] = useState("");
+  const [isFirstEmojiSelected, setFirstEmojiSelected] = useState(true);
 
   useEffect(() => {
-    if (emojiList && emojiList.length > 0) {
+    if (emojiList.length > 0) {
       setFirstEmoji(getRandomEmoji(emojiList));
       setSecondEmoji(getRandomEmoji(emojiList));
     }
-  }, [emojiList])
+  }, [emojiList]);
 
   useEffect(() => {
     if (firstEmoji && secondEmoji) {
-      var emojiObj = emojiMixer[firstEmoji]?.combinations[secondEmoji]?.[0]?.gStaticUrl;
-      setFinalAnswer(emojiObj);
+      const emojiObj =
+        emojiMixer[firstEmoji]?.combinations[secondEmoji]?.[0]?.gStaticUrl;
+      setFinalAnswer(emojiObj || "");
     }
-  }, [firstEmoji, secondEmoji]);
+  }, [firstEmoji, secondEmoji, emojiMixer]);
 
   return (
-    <div className='flex w-full items-center justify-center'>
-      <div className='cookingContainer'>
-        <div className='emojiInnerContainer'>
-          <div className='flex flex-row'>
-            <EmojiComponent
-              emoji={firstEmoji}
-              isSelected={isFirstEmojiSelected}
-              emojiClicked={() => {
-                setFirstEmojiSelected(true);
-                setSecondEmojiSelected(false);
-              }}
-              randomClicked={() => {
-                setFirstEmoji(getRandomEmoji(getEmojiCombinations(emojiMixer, secondEmoji)));
-              }} />
-
-            <div className="text-3xl bold m-2">+</div>
-
-            <EmojiComponent
-              emoji={secondEmoji}
-              isSelected={isSecondEmojiSelected}
-              emojiClicked={() => {
-                setFirstEmojiSelected(false);
-                setSecondEmojiSelected(true);
-              }}
-              randomClicked={() => {
-                setSecondEmoji(getRandomEmoji(getEmojiCombinations(emojiMixer, firstEmoji)));
-              }} />
-
-            <div className="text-3xl bold m-2"> = </div>
-
-            <ResultComponent finalEmoji={finalAnswer} />
-          </div>
+    <div className="flex w-full items-center justify-center">
+      <div className="cookingContainer">
+        <div className="emojiInnerContainer flex flex-row">
+          <EmojiComponent
+            emoji={firstEmoji}
+            isSelected={isFirstEmojiSelected}
+            emojiClicked={() => {
+              setFirstEmojiSelected(true);
+            }}
+            randomClicked={() =>
+              setFirstEmoji(
+                getRandomEmoji(getEmojiCombinations(emojiMixer, secondEmoji))
+              )
+            }
+          />
+          <div className="text-3xl bold m-2">+</div>
+          <EmojiComponent
+            emoji={secondEmoji}
+            isSelected={!isFirstEmojiSelected}
+            emojiClicked={() => {
+              setFirstEmojiSelected(false);
+            }}
+            randomClicked={() =>
+              setSecondEmoji(
+                getRandomEmoji(getEmojiCombinations(emojiMixer, firstEmoji))
+              )
+            }
+          />
+          <div className="text-3xl bold m-2">=</div>
+          <ResultComponent finalEmoji={finalAnswer} />
         </div>
 
         <div className="emoji-container mt-5">
-          {emojiList.map((emoji, index) => {
-
-            return (
-              <EmojiView
-                key={index}
-                isDisabled={checkEmojiEnableDisabled(emojiMixer, !isFirstEmojiSelected ? firstEmoji : secondEmoji, emoji)}
-                emoji={emoji}
-                width={40}
-                radius={8}
-                emojiClicked={() => {
-                  if (isFirstEmojiSelected) {
-                    setFirstEmoji(emoji);
-                  } else {
-                    setSecondEmoji(emoji);
-                  }
-                }}
-              />
-            );
-          })}
+          {emojiList.map((emoji, index) => (
+            <EmojiView
+              key={index}
+              emoji={emoji}
+              isSelected={
+                isFirstEmojiSelected
+                  ? firstEmoji === emoji
+                  : secondEmoji === emoji
+              }
+              emojiClicked={() => {
+                if (isFirstEmojiSelected) {
+                  setFirstEmoji(emoji);
+                } else {
+                  setSecondEmoji(emoji);
+                }
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cooking
+export default Cooking;

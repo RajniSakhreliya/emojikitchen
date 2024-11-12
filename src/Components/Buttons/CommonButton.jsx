@@ -1,23 +1,23 @@
-import React from 'react'
+import PropTypes from "prop-types";
 
-const CommonButton = ({ btnText, onBtnClick, extraClass }) => {
-    return (
-            <button style={styles.button} className={`${extraClass} mt-1`} onClick={onBtnClick}>
-                {btnText}
-            </button>
-    )
-}
+const CommonButton = ({
+  children,
+  btnText = "Click Me",
+  onBtnClick,
+  className = "",
+  ...props
+}) => {
+  return (
+    <button
+      type="button"
+      className={`flex items-center w-full py-1 text-base text-white bg-[#007bff] border-none rounded-3xl cursor-pointer mt-1 ${className}`}
+      aria-label={btnText}
+      onClick={onBtnClick}
+      {...props}
+    >
+      {children || btnText}
+    </button>
+  );
+};
 
-export default CommonButton
-const styles = {
-    button: {
-        width: '100%',
-        padding: '5px 0px',
-        fontSize: '16px',
-        color: '#fff',
-        backgroundColor: '#007bff',
-        border: 'none',
-        borderRadius: '50px',
-        cursor: 'pointer',
-    }
-}
+export default CommonButton;

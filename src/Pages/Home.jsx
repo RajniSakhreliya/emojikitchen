@@ -1,11 +1,6 @@
-import React from 'react'
-import Emojigrid from '../Components/Emojigrid/Emojigrid'
-import Header from '../Components/Header/Header'
+import React from "react";
+import Emojigrid from "../Components/Emojigrid/Emojigrid";
 
-const Home = () => {
-    return (
-        <Emojigrid />
-    )
-}
+const Home = () => <Emojigrid />;
 
-export default Home
+export default Home;

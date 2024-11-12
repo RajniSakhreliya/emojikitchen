@@ -1,9 +1,13 @@
-import React from 'react'
+import PropTypes from "prop-types";
 
-const Container = ({children}) => {
-    return (
-        <div className='flex w-full max-w-7xl mx-auto justify-center items-center'>{children}</div>
-    )
-}
+const Container = ({ children, className  }) => {
+  return (
+    <div
+      className={`flex w-full justify-center items-center ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
-export default Container
+export default Container;
