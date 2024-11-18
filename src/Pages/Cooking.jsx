@@ -3,12 +3,12 @@ import "../Styles/cooking.css";
 import EmojiComponent from "../Components/EmojiComponents/EmojiComponent";
 import ResultComponent from "../Components/EmojiComponents/ResultComponent";
 import { useSelector } from "react-redux";
-import { getRandomEmoji, getEmojiCombinations } from "../Utils/Utils";
+import { getRandomEmoji, getEmojiCombinations, checkEmojiEnableDisabled } from "../Utils/Utils";
 import EmojiView from "../Components/EmojiComponents/EmojiView";
 
 const Cooking = () => {
-  const emojiList = useSelector((state) => state.emojiData);
-  const emojiMixer = useSelector((state) => state.emojiMixer);
+  const emojiList = useSelector((state) => state.emoji.emojiData);
+  const emojiMixer = useSelector((state) => state.emoji.emojiMixer);
 
   const [firstEmoji, setFirstEmoji] = useState("");
   const [secondEmoji, setSecondEmoji] = useState("");
@@ -16,7 +16,7 @@ const Cooking = () => {
   const [isFirstEmojiSelected, setFirstEmojiSelected] = useState(true);
 
   useEffect(() => {
-    if (emojiList.length > 0) {
+    if (emojiList?.length > 0) {
       setFirstEmoji(getRandomEmoji(emojiList));
       setSecondEmoji(getRandomEmoji(emojiList));
     }
@@ -64,8 +64,9 @@ const Cooking = () => {
         </div>
 
         <div className="emoji-container mt-5">
-          {emojiList.map((emoji, index) => (
+          {emojiList?.map((emoji, index) => (
             <EmojiView
+              isDisabled={checkEmojiEnableDisabled(emojiMixer, isFirstEmojiSelected ? secondEmoji : firstEmoji, emoji,)}
               key={index}
               emoji={emoji}
               isSelected={

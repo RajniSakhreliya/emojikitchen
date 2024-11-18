@@ -44,6 +44,7 @@ const ResultComponent = ({ finalEmoji, width = 70 }) => {
 
         {!imageError && (
           <img
+            alt="Emoji"
             loading="lazy"
             className="p-1"
             src={finalEmoji}
@@ -59,6 +60,7 @@ const ResultComponent = ({ finalEmoji, width = 70 }) => {
 
       <div className="randomComponent mt-1">
         <img
+          alt="Random"
           loading="lazy"
           src={iconCopy}
           style={{ width: 20, height: 20 }}

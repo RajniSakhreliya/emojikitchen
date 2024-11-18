@@ -10,12 +10,12 @@ export const emojiSlice = createSlice({
     initialState,
     reducers: {
         SET_EMOJI_DATA: (state, action) => {
-            if (Object.keys(state.emojiData).length === 0) {
+            if (state.emojiData.length <= 0 && action.payload) {
                 state.emojiData = action.payload;
             }
         },
         SET_EMOJI_MIXER: (state, action) => {
-            if (Object.keys(state.emojiMixer).length === 0) {
+            if (Object.values(state.emojiMixer).length === 0 && action.payload) {
                 state.emojiMixer = action.payload;
             }
         },

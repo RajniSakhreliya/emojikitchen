@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import EmojiView from "./EmojiView";
 import RandomComponent from "./RandomComponent";
 import icon_random from "../../assets/icons/icon_random.svg";
@@ -21,7 +21,7 @@ const EmojiComponent = ({
 
       {randomClicked && (
         <RandomComponent onClick={randomClicked}>
-          <img src={icon_random} className="w-[20px] h-[20px]" loading="lazy" />
+          <img src={icon_random} className="w-[20px] h-[20px]" loading="lazy" alt="Random"/>
         </RandomComponent>
       )}
     </div>

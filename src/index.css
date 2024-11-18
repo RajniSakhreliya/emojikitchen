@@ -21,3 +21,19 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+.emojiFont {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+a {
+  color: blue;
+  font-weight: bold;
+}

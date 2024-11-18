@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import emojiStore from './app/emojiStore';
+import authStore from './app/authStore';
+import Loading from "./Components/Loading";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={emojiStore}>
+  <Provider store={authStore}>
+    <Loading />
     <App />
   </Provider>
 );

@@ -1,13 +1,27 @@
+import { toast } from 'react-toastify';
+
 export const EMOJI_URI = process.env.REACT_APP_URI_EMOJI
 
+// function getEmojiFromCode(emoji, isLeft) {
+//     var emoji = isLeft ? emoji.leftEmojiCodepoint : emoji.rightEmojiCodepoint;
+//     try {
+//         return `https://fonts.gstatic.com/s/e/notoemoji/latest/${emoji}/emoji.svg`;
+//     } catch (error) {
+//         return "";
+//     }
+// }
+
 export function getEmojiFromCode(emoji) {
-    var modifiedEmoji = emoji.replace("fe0f", "");
+    let modifiedEmoji = emoji.replace("fe0f-", "").replace("-fe0f", "");
+
+    // Replace "-" with "_"
     modifiedEmoji = modifiedEmoji.replace(/-/g, '_');
 
+    // Remove trailing "_", if any
     if (modifiedEmoji.endsWith("_")) {
         modifiedEmoji = modifiedEmoji.substring(0, modifiedEmoji.length - 1);
     }
-    
+
     return `${EMOJI_URI}emoji_u${modifiedEmoji}.svg`;
 }
 
@@ -70,6 +84,7 @@ export const copyImageToClipboard = async (imageUrl) => {
         const blob = await response.blob();
         const clipboardItem = new ClipboardItem({ 'image/png': blob });
         await navigator.clipboard.write([clipboardItem]);
+        toast.success("Copied Successfully");
     } catch (error) {
         console.error('Failed to copy image: ', error);
     }
