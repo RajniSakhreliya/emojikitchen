@@ -1,15 +1,9 @@
 import { toast } from 'react-toastify';
 
 export const EMOJI_URI = process.env.REACT_APP_URI_EMOJI
-
-// function getEmojiFromCode(emoji, isLeft) {
-//     var emoji = isLeft ? emoji.leftEmojiCodepoint : emoji.rightEmojiCodepoint;
-//     try {
-//         return `https://fonts.gstatic.com/s/e/notoemoji/latest/${emoji}/emoji.svg`;
-//     } catch (error) {
-//         return "";
-//     }
-// }
+export const WEBSITE_TITLE = "Emoji Kitchen - Let's cook some new emojis + New Emojis!";
+export const WEBSITE_DESC ='Browse thousands of delightful Emoji Kitchen combinations. All credit goes to the Emoji Kitchen team for the care they put into emoji, standards, and imaginary creatures.';
+export const WEBSITE_KEYWORDS = "emoji kitchen,Emoji Kitchen Combinations,Kitchen Combinations,social game";
 
 export function getEmojiFromCode(emoji) {
     let modifiedEmoji = emoji.replace("fe0f-", "").replace("-fe0f", "");

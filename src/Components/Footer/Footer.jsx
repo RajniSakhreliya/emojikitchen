@@ -12,20 +12,19 @@ const Footer = () => {
 
     return (
         <footer className="w-full bg-[#EDF2F7] relative py-4">
-            <Container className={`flex flex-col`}>
-                <ul className="flex space-x-6">
+            <div className={`flex flex-col w-full`}>
+                <div className='grid grid-cols-2 tablet:grid-cols-4 w-full justify-start'>
                     {navItems.map((item) => (
-                        <li key={item.name}>
-                            <Link to={item.slug} className="text-lg text-gray-500 hover:text-[#0000ff] p-2">
-                                {item.name}
-                            </Link>
-                        </li>
+                        <Link to={item.slug} key={item.name} 
+                        className="w-full text-center tablet:text-center text-lg text-gray-500 hover:text-[#0000ff] p-2">
+                            {item.name}
+                        </Link>
                     ))}
-                </ul>
-                <span className='mt-2 text-black font-bold'>
+                </div>
+                <span className='mt-2 text-black font-bold text-2xl self-center'>
                     © 2024 Emoji Kitchen
                 </span>
-            </Container>
+            </div>
         </footer>
     )
 }

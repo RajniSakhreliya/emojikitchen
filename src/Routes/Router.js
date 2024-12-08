@@ -17,53 +17,53 @@ import EditPost from '../Pages/Admin/EditPost';
 
 const Router = () => {
     return (
-        <Routes>
-            <Route path="/" exact={true} element={<Home />} />
+            <Routes>
+                <Route path="/" exact={true} element={<Home />} />
 
-            <Route path="/cooking" exact={true} element={<Cooking />} />
-            <Route path="/emoji-kitchen-combinations" exact={true} element={<Combinations />} />
-            <Route path="/about-us" exact={true} element={<AboutUs />} />
-            <Route path="/contact" exact={true} element={<ContactUs />} />
-            <Route path="/disclaimer" exact={true} element={<Disclaimer />} />
-            <Route path="/privacy-policy" exact={true} element={<PrivacyPolicy />} />
+                <Route path="/cooking" exact={true} element={<Cooking />} />
+                <Route path="/emoji-kitchen-combinations" exact={true} element={<Combinations />} />
+                <Route path="/about-us" exact={true} element={<AboutUs />} />
+                <Route path="/contact" exact={true} element={<ContactUs />} />
+                <Route path="/disclaimer" exact={true} element={<Disclaimer />} />
+                <Route path="/privacy-policy" exact={true} element={<PrivacyPolicy />} />
 
-            <Route path="/login" exact={true}
-                element={<AuthLayout authentication={false}>
-                    <Login />
-                </AuthLayout>
-                } />
-
-            <Route path="/signup"
-                exact={true} element={
-                    <AuthLayout authentication={false}>
-                        <Signup />
+                <Route path="/login" exact={true}
+                    element={<AuthLayout authentication={false}>
+                        <Login />
                     </AuthLayout>
-                } />
+                    } />
 
-            <Route path="/all-posts"
-                exact={true} element={
-                    <AllPosts />
-                } />
+                <Route path="/signup"
+                    exact={true} element={
+                        <AuthLayout authentication={false}>
+                            <Signup />
+                        </AuthLayout>
+                    } />
 
-            <Route path="/add-post"
-                exact={true} element={
-                    <AuthLayout authentication>
-                        <AddPost />
-                    </AuthLayout>
-                } />
+                <Route path="/all-posts"
+                    exact={true} element={
+                        <AllPosts />
+                    } />
 
-            <Route path="/edit-post/:slug"
-                exact={true} element={
-                    <AuthLayout authentication>
-                        <EditPost />
-                    </AuthLayout>
-                } />
+                <Route path="/add-post"
+                    exact={true} element={
+                        <AuthLayout authentication>
+                            <AddPost />
+                        </AuthLayout>
+                    } />
 
-            <Route path="/post/:slug"
-                exact={true}
-                element={<Post />} />
+                <Route path="/edit-post/:slug"
+                    exact={true} element={
+                        <AuthLayout authentication>
+                            <EditPost />
+                        </AuthLayout>
+                    } />
 
-        </Routes>
+                <Route path="/post/:slug"
+                    exact={true}
+                    element={<Post />} />
+
+            </Routes>
     )
 }
 

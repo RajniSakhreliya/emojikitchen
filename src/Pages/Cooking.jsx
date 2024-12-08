@@ -5,6 +5,7 @@ import ResultComponent from "../Components/EmojiComponents/ResultComponent";
 import { useSelector } from "react-redux";
 import { getRandomEmoji, getEmojiCombinations, checkEmojiEnableDisabled } from "../Utils/Utils";
 import EmojiView from "../Components/EmojiComponents/EmojiView";
+import Meta from "../Components/Meta";
 
 const Cooking = () => {
   const emojiList = useSelector((state) => state.emoji.emojiData);
@@ -32,6 +33,8 @@ const Cooking = () => {
 
   return (
     <div className="flex w-full items-center justify-center">
+      <Meta />
+
       <div className="cookingContainer">
         <div className="emojiInnerContainer flex flex-row">
           <EmojiComponent

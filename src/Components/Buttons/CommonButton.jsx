@@ -8,7 +8,7 @@ const CommonButton = ({
   return (
     <button
       type="button"
-      className={`flex items-center justify-center px-2 py-1 text-base text-white bg-[#007bff] border-none rounded-3xl cursor-pointer mt-1 ${className}`}
+      className={`flex items-center justify-center px-2 py-2 text-base text-white bg-[#007bff] border-none rounded-3xl cursor-pointer mt-1 ${className}`}
       aria-label={btnText}
       {...props}
     >

@@ -1,5 +1,6 @@
 import React from 'react'
 import HtmlValue from '../Components/HtmlValue'
+import Meta from '../Components/Meta'
 
 const Disclaimer = () => {
     const data = [
@@ -45,6 +46,8 @@ const Disclaimer = () => {
 
     return (
         <div className="flex flex-col mx-3 my-3 p-5 bg-white rounded-sm overflow-auto max-w-screen-desktop self-center">
+            <Meta />
+
             <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">
                 Disclaimer
             </h1>

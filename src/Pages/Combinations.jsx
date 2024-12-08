@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import EmojiView from "../Components/EmojiComponents/EmojiView";
 import { copyImageToClipboard, getEmojiCombinationsWithData, getEmojiFromCode } from "../Utils/Utils";
 import iconCopy from "../assets/icons/ic_copy.svg";
+import Meta from "../Components/Meta";
 
 const Combinations = () => {
   const itemsPerPage = 54;
@@ -53,6 +54,8 @@ const Combinations = () => {
 
   return (
     <div className="flex flex-col mx-3 my-3 p-5 bg-white rounded-sm overflow-auto max-w-screen-desktop self-center">
+      <Meta />
+
       <h1 className="text-2xl md:text-4xl font-bold">
         Let Loose your Creative Grit with Emoji Combinations
       </h1>

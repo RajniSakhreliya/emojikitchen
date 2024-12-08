@@ -98,7 +98,6 @@ const Header = () => {
             {navItems.map((item) => (
               <div key={item.name} className="w-full text-center">
                 {
-                  item.active &&
                   <Link
                     to={item.slug}
                     onClick={() => setIsMenuOpen(false)} // Close menu after clicking an option
@@ -107,7 +106,26 @@ const Header = () => {
                   </Link>
                 }
               </div>
-            ))}
+            ))
+            }
+
+            {
+              <div
+                key={"keyLogout"}
+                onClick={() => {
+                  if (authStatus) {
+                    // navigate("/");
+                    dispatch(logout());
+                    toast.success("Logout Successfully!!!")
+                  } else {
+                    navigate("/login");
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="cursor-pointer text-lg font-bold text-[#2c2c54] hover:bg-[#d1e8ff] hover:text-[#0000ff] p-2 rounded-lg">
+                {authStatus ? <>Logout</> : <>Login</>}
+              </div>
+            }
           </div>
         )}
       </Container>

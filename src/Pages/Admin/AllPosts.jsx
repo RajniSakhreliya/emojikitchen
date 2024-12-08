@@ -4,6 +4,7 @@ import Container from '../../Components/container/Container';
 import PostCard from "../../AdminComponents/PostCard";
 import CommonButton from '../../Components/Buttons/CommonButton';
 import { useNavigate } from 'react-router-dom';
+import Meta from '../../Components/Meta';
 
 function AllPosts() {
     const [posts, setPosts] = useState([])
@@ -18,7 +19,9 @@ function AllPosts() {
     })
 
     return (
-        <div className='w-full py-8'>
+        <div className='w-full py-8 flex flex-col'>
+            <Meta />
+
             <Container className="flex-col">
                 <CommonButton className='max-w-[200px] items-center px-4' onClick={() => {
                     navigate("/add-post")

@@ -1,5 +1,6 @@
 import React from 'react'
 import HtmlValue from '../Components/HtmlValue'
+import Meta from '../Components/Meta'
 
 const AboutUs = () => {
     const data = [
@@ -36,6 +37,8 @@ const AboutUs = () => {
     function SetParaHead(item) {
         return (
             <div className='flex flex-col'>
+                <Meta />
+
                 {item.heading && <h2 className="text-2xl md:text-4xl font-bold">
                     {item?.heading}
                 </h2>

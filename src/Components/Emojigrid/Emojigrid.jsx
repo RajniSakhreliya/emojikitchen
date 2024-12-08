@@ -8,7 +8,7 @@ const Emojigrid = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-row justify-center mt-5">
+    <div className="flex flex-row justify-center my-5">
       <div className="emojiGridContainer">
         <div className="emojiGrid">
           <img
@@ -21,7 +21,7 @@ const Emojigrid = () => {
         </div>
 
         <CommonButton
-          className="py-2 text-center justify-center"
+          className="w-[calc(90%)] py-2 font-bold text-center justify-center"
           onClick={() => {
             navigate("/cooking");
           }}

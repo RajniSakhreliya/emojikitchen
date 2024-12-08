@@ -63,7 +63,7 @@ const EmojiView = ({
             }`}
           src={gStaticUrl ? gStaticUrl : getEmojiFromCode(emoji)}
           onError={handleImageError}
-          alt="Emoji"
+          alt="Emoji Kitchen"
         />
       ) : (
         <div className="loading-circle"></div>

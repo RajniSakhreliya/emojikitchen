@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CommonButton from "../../Components/Buttons/CommonButton";
 import Container from "../../Components/container/Container";
 import { startLoading, stopLoading } from "../../app/loadingSlice";
+import Meta from "../../Components/Meta";
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -47,6 +48,8 @@ export default function Post() {
 
     return post ? (
         <div className="flex items-center justify-center m-2 rounded-[10px] border-gray-300 bg-white">
+            <Meta />
+
             <Container className="flex-col w-[calc(90%)] p-2">
                 {isAuthor && (
                     <div className="flex w-full gap-2 items-center justify-end">

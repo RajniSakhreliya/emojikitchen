@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Components/Footer/Footer';
 import authService from "./appWriter/authService"
 import { login, logout } from "./app/authSlice"
+import Meta from './Components/Meta';
 
 function App() {
 
